@@ -10,6 +10,8 @@ namespace gary_garage
         {
             // method definition omitted
         }
+
+        //use override method to change the virtual method set by parent
         public override void Drive(Vehicle aVehicle, string name)
         {
             Console.WriteLine($"The {aVehicle.MainColor} Zero {name} ziped Past like a mouse!");

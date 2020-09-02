@@ -11,8 +11,10 @@ namespace gary_garage
             fxs.MainColor = "Black";
             fxs.MaximumOccupancy = "2";
             fxs.BatteryKWh = 42.24;
-            // passed through (Vehicle aVehicle) as paramaters to get access to the paraent property of color
+            // passed through (Vehicle aVehicle) as paramaters to get access to the paraent property of color 
+            //and then a string to capture the name of this instance... imsure there was a better way to do that.
             fxs.Drive(fxs, "fxs");
+            //pass through the turn direction as a string
             fxs.Turn("right");
             fxs.Stop();
             Console.WriteLine();
