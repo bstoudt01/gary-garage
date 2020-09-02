@@ -10,9 +10,13 @@ namespace gary_garage
         {
             // method definition omitted
         }
-        public override void Drive(Vehicle aVehicle)
+        public override void Drive(Vehicle aVehicle, string vehicle)
         {
             Console.WriteLine($"The {aVehicle.MainColor} Tesla ghosted past like a fart in the wind!");
+        }
+        public override void Turn(string direction)
+        {
+            Console.WriteLine($"The Telsa took a {direction} from the stop sign");
         }
     }
 }
