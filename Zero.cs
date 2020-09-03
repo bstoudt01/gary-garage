@@ -2,15 +2,26 @@ using System;
 
 namespace gary_garage
 {
-    public class Zero : Vehicle // Electric motorcycle
+    public class Zero : Vehicle, IElectricVehicle // Electric motorcycle
     {
+        public double Range { get; set; }
+
+        public double MilesDriven { get; set; }
         public double BatteryKWh { get; set; }
 
+        public double CurrentChargePercentage { get; set; }
         public void ChargeBattery()
         {
-            // method definition omitted
+            MilesDriven = 0;
+            CurrentCharge();
         }
 
+        public void CurrentCharge()
+        {
+
+            double batteryUsed = (BatteryKWh / Range) * MilesDriven;
+            CurrentChargePercentage = 1 - (batteryUsed / BatteryKWh);
+        }
         //use override method to change the virtual method set by parent
         public override void Drive(Vehicle aVehicle, string name)
         {

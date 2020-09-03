@@ -1,7 +1,7 @@
 # gary-garage
 
 
-Console application to practice using inherited properties and methods 
+Console application to learn (by practice, practice, practice) using inherited properties and methods 
 from parent classes that are passed down to child classes.
 
 Such as
