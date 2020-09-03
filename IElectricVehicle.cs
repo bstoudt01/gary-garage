@@ -8,6 +8,5 @@ namespace gary_garage
         void ChargeBattery();
 
         double CurrentChargePercentage { get; set; }
-        void CurrentCharge();
     }
 }

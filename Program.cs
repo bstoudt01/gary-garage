@@ -43,8 +43,8 @@ namespace gary_garage
             modelS.MainColor = "Yellow";
             modelS.MaximumOccupancy = "1 ego";
             modelS.BatteryKWh = 20;
-            modelS.MilesDriven = 50;
-            modelS.Range = 240;
+            modelS.MilesDriven = 200;
+            modelS.Range = 348;
             modelS.CurrentCharge();
             modelS.Drive(modelS, "modelS");
             modelS.Turn("right");
@@ -61,10 +61,11 @@ namespace gary_garage
             Console.WriteLine("Electric Vehicles");
             foreach (IElectricVehicle ev in IElectricVehicles)
             {
-                Console.WriteLine($"This is the current charge " + ev.CurrentChargePercentage.ToString("P", CultureInfo.InvariantCulture));
+                Console.WriteLine($"After driving {ev.MilesDriven} miles the current charge of your {ev.BatteryKWh}KWh battery is " + ev.CurrentChargePercentage.ToString("P", CultureInfo.InvariantCulture));
 
             }
 
+            Console.WriteLine("..... Charging all Batteries, CLEAR!");
             foreach (IElectricVehicle ev in IElectricVehicles)
             {
                 // This should charge the vehicle to 100%
@@ -78,46 +79,53 @@ namespace gary_garage
 
             /***********************************************/
 
-            // Cessna mx410 = new Cessna();
-            // mx410.MainColor = "White w. stripes";
-            // mx410.MaximumOccupancy = "2 and a jumper";
-            // mx410.FuelCapacity = 100;
-            // mx410.Drive(mx410, "mx410");
-            // mx410.Turn("direction");
-            // mx410.Stop();
-            // Console.WriteLine();
+            Cessna mx410 = new Cessna();
+            mx410.MainColor = "White w. stripes";
+            mx410.MaximumOccupancy = "2 and a jumper";
+            mx410.FuelCapacity = 100;
+            mx410.Range = 1200;
+            mx410.MilesTraveled = 350;
+            mx410.CurrentFuelTankLevel();
+            mx410.Drive(mx410, "mx410");
+            mx410.Turn("direction");
+            mx410.Stop();
+            Console.WriteLine();
 
-            // Ram x1600 = new Ram();
-            // x1600.MainColor = "Grey";
-            // x1600.MaximumOccupancy = "the family";
-            // x1600.FuelCapacity = 40;
-            // x1600.Drive(x1600, "x1600");
-            // x1600.Turn("direction");
-            // x1600.Stop();
-            // Console.WriteLine();
+            Ram x1600 = new Ram();
+            x1600.MainColor = "Grey";
+            x1600.MaximumOccupancy = "the family";
+            x1600.FuelCapacity = 40;
+            x1600.Range = 350;
+            x1600.MilesTraveled = 210;
+            x1600.CurrentFuelTankLevel();
+            x1600.Drive(x1600, "x1600");
+            x1600.Turn("direction");
+            x1600.Stop();
+            Console.WriteLine();
 
-            // List<?? ?> gasVehicles = new List<?? ?>()
-            // {
-            //     ram,
-            //     cessna150
-            // };
+            List<IGasVehicle> gasVehicles = new List<IGasVehicle>()
+            {
+                mx410,
+                x1600
+            };
 
-            // Console.WriteLine("Gas Vehicles");
-            // foreach ( ?? ? gv in gasVehicles)
-            // {
-            //     Console.WriteLine($"{gv.CurrentTankPercentage}");
-            // }
+            Console.WriteLine("Gas Vehicles");
+            foreach (IGasVehicle gv in gasVehicles)
+            {
+                Console.WriteLine($"After traveling {gv.MilesTraveled} miles your {gv.FuelCapacity}gallons fuel tank has " + gv.CurrentTankPercentage.ToString("P", CultureInfo.InvariantCulture) + " remaining.");
+            }
 
-            // foreach ( ?? ? gv in gasVehicles)
-            // {
-            //     // This should completely refuel the gas tank
-            //     gv.RefuelTank();
-            // }
+            Console.WriteLine("..... I said quit Smokin , im gonna start fueling these thangs up");
+            foreach (IGasVehicle gv in gasVehicles)
+            {
+                // This should completely refuel the gas tank
+                gv.RefuelTank();
+            }
 
-            // foreach ( ?? ? gv in gasVehicles)
-            // {
-            //     Console.WriteLine($"{gv.CurrentTankPercentage}");
-            // }
+            foreach (IGasVehicle gv in gasVehicles)
+            {
+                Console.WriteLine($"Here they are after fueling " + gv.CurrentTankPercentage.ToString("P", CultureInfo.InvariantCulture));
+            }
         }
     }
 }
